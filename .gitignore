@@ -149,4 +149,7 @@ tags
 # Persistent undo
 [._]*.un~
 
+# Keys 
+config/keys.js
+
 # End of https://www.toptal.com/developers/gitignore/api/node,vim,sass
