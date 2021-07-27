@@ -13,10 +13,6 @@ module.exports = passport => {
     User.findById(jwt_payload.id)
       .then(user => {
         if (user) {
-          console.log("returning us");
-          console.log(user.id);
-          console.log(user.email);
-
           return done(null, user);
         }
 

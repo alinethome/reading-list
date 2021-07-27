@@ -59,6 +59,13 @@ const handleLogin = (req, res) => {
   });
 };
 
+const getCurrentUser = (req, res) => {
+  res.json({
+    id: req.user.id,
+    email: req.user.email
+  });
+};
+
 const createUser = ({ email, password }) => {
   const newUser = new User({ email, password });
 
@@ -88,6 +95,9 @@ const checkIfEmailExists = email => User.findOne({ email })
 
 router.post('/register', handleRegistration);
 router.post('/login', handleLogin);
+router.get('/current', 
+  passport.authenticate('jwt', { session: false }),
+  getCurrentUser);
 
 module.exports = router;
 

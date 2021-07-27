@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const passport = require("passport");
 const port = process.env.PORT || 5000
 
 const users = require("./routes/api/users");
@@ -9,6 +10,8 @@ const db = require("./config/keys").mongoURI;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 
 mongoose
